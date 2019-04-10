@@ -1,5 +1,5 @@
 import random
-import Board as brd
+import Board
 
 
 def random_move(board):

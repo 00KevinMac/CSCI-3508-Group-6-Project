@@ -1,3 +1,9 @@
+"""
+Kevin Macfarlane
+CSCI 3508
+11 Apr 2019
+Player Class - takes in a board object and returns a random valid move
+"""
 import sys
 import random
 import Board

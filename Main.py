@@ -5,10 +5,10 @@ CSCI 3508, Prof. Doug Williams
 """
 
 import sys
-import Reader as rdr
+import StreamReader as rdr
 import Board as brd
 import Player as plr
-import Sender as snd
+import StreamSender as snd
 
 sys.stderr.write("Connect Four\n")
 
@@ -21,7 +21,7 @@ bad_move = True
 max_iters = 3
 
 # do we need these? I think Doug said something about using stderr
-sys.stderr.write("Player: " + str(player) + '\n')
+sys.stderr.write("Player: " + str(player_num) + '\n')
 sys.stderr.write("Width: " + str(width) + '\n')
 sys.stderr.write("Height: " + str(height) + '\n')
 
@@ -30,7 +30,7 @@ while True:
     sys.stderr.write("Recieving board from driver\n")
 
     # read in the json to the board
-    board = rdr.read_json(width, height)  
+    board = rdr.stream_read(width, height)
 
     #update log 
     if board.isEmpty():
@@ -73,8 +73,8 @@ while True:
         else:
             sys.stderr.write("Send failed, retrying...\n")
 
-    if !success:
+    if not success:
         sys.stderr.write("Send failed\n")
             
 
-return
+

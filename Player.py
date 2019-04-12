@@ -1,12 +1,13 @@
 import sys
 import random
 import Board
+import numpy as np
 
 
 def random_move(board, playerNum):
     moves = []
 
-    sys.stderr.write("Board: " + board + '\n')  # unsure if this will work
+    sys.stderr.write("Board: " + np.matrix(board) + '\n')  # unsure if this will work
 
     moves = board.get_OkayDokayColumns()
     sys.stderr.write("Valid moves: " + moves + '\n')  # displays the valid moves

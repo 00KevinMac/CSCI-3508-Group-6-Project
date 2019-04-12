@@ -14,3 +14,4 @@ def stream_read(width, height):
     board = Board(height, width)
     parse = json.loads(readin)
     board.board_Array = parse['grid']
+    return board

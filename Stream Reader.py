@@ -1,6 +1,6 @@
 import json
 import sys
-inport Board
+import Board
 
 #def init_stream_read():
     #readin = input()

@@ -2,16 +2,19 @@
 # The stream sender will put the move into stdout,
 # then return a bool representing the success or failure of the stream.
 import sys
+import json
 
-def Stream_Sender(move):
+def send_move(move):
     try:
-        sys.stdout.write(move)
+        msg = json.dumps(move)
+        sys.stderr.write("Sending this JSON : " + msg + '\n')
+        sys.stdout.write(msg + '\n')
         sys.stdout.flush()
-        return true
+        return True
     except:
         e = sys.exc_info()[0]
-        print("Error: ", e)
-        return false
+        sys.stderr.write("Error " + str(e) + '\n')
+        return False
 
     
     

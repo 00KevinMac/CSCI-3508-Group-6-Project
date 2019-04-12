@@ -32,7 +32,7 @@ while True:
     # read in the json to the board
     board = rdr.stream_read(width, height)
 
-    #update log 
+    # update log
     if board.isEmpty():
         if player_num != 1:
             sys.stderr.write("Recieve failed\n")
@@ -62,13 +62,14 @@ while True:
             bad_move = False
 
     sys.stderr.write("Sending move to driver\n")   
-    #try to send move 3 times
+    # try to send move 3 times
     for i in range(0,3):
         # send move to driver
         success = snd.send_move(move)
 
         if success:
             sys.stderr.write("Send succeeded\n")
+            turn_num += 1
             break
         else:
             sys.stderr.write("Send failed, retrying...\n")

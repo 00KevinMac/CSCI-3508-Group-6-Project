@@ -1,6 +1,6 @@
 import json
 import sys
-import Board
+import Board as brd
 
 #def init_stream_read():
     #readin = input()
@@ -11,8 +11,8 @@ import Board
     # return board
 
 def stream_read(width, height):
-    readin = input()
+    readin = sys.stdin
     parse = json.loads(readin)
     board_array = parse['grid']
-    board = Board(board_array)
+    board = brd.Board(board_array)
     return board

@@ -17,7 +17,6 @@ player_num = int(sys.argv[2])  # this gives the player number
 width = int(sys.argv[4])  # this gives us the width
 height = int(sys.argv[6])  # this gives us the height
 turn_num = 0
-bad_move = True
 max_iters = 3
 
 # do we need these? I think Doug said something about using stderr
@@ -43,6 +42,7 @@ while True:
         
     sys.stderr.write("Determining move\n")
 
+    bad_move = True  # moved to here, otherwise it never runs the random move function at the bottom
     while bad_move:
         # get random valid move
         move = plr.random_move(board, player_num)

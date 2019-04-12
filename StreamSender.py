@@ -4,9 +4,12 @@
 import sys
 import json
 
+
 def send_move(move):
     try:
-        msg = json.dumps(move)
+        moveDict = {}
+        moveDict['move'] = move
+        msg = json.dumps(moveDict)
         sys.stderr.write("Sending this JSON : " + msg + '\n')
         sys.stdout.write(msg + '\n')
         sys.stdout.flush()
@@ -15,6 +18,3 @@ def send_move(move):
         e = sys.exc_info()[0]
         sys.stderr.write("Error " + str(e) + '\n')
         return False
-
-    
-    

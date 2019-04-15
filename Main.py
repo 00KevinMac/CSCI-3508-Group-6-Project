@@ -17,7 +17,7 @@ player_num = int(sys.argv[2])  # this gives the player number
 width = int(sys.argv[4])  # this gives us the width
 height = int(sys.argv[6])  # this gives us the height
 turn_num = 0
-EOF_flag = false
+EOF_flag = False
 max_iters = 3
 
 # do we need these? I think Doug said something about using stderr
@@ -34,7 +34,7 @@ while True:
 
     if EOF_flag:
         sys.stderr.write("Game over. Exiting...\n")
-        return
+        break
     
     # update log
     if board.isEmpty():

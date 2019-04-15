@@ -42,14 +42,7 @@ def stream_read(width, height):
 
 def stream_read(width, height, EOF_flag):
     for line in sys.stdin:
-        if line == "":
-            sys.stderr.write("END OF FILE\n")
-
         sys.stderr.write(line)
-        if line == "":
-            board = brd.Board()
-            EOF_flag = True
-            return board
         parse = json.loads(line)
         board_array = parse['grid']
         board = brd.Board(board_array)
@@ -57,6 +50,7 @@ def stream_read(width, height, EOF_flag):
     
     board = brd.Board()
     EOF_flag = True
+    sys.stderr.write("EOF Recieved.\n")
     return board
 
 

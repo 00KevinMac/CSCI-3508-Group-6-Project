@@ -42,6 +42,9 @@ def stream_read(width, height):
 
 def stream_read(width, height):
     for line in sys.stdin:
+        if line == "":
+            sys.stderr.write("END OF FILE\n")
+
         sys.stderr.write(line)
         parse = json.loads(line)
         board_array = parse['grid']

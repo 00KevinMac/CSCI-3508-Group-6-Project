@@ -40,10 +40,17 @@ def stream_read(width, height):
     board = brd.Board(board_array)
     return board"""
 
-def stream_read(width, height):
+def stream_read(width, height, EOF_flag):
     for line in sys.stdin:
         sys.stderr.write(line)
+        if line == "":
+            board = brd.Board()
+            EOF_flag = True
+            return board
         parse = json.loads(line)
         board_array = parse['grid']
         board = brd.Board(board_array)
         return board
+
+
+    

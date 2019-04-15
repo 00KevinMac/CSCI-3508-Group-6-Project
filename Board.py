@@ -6,6 +6,9 @@ Board Class - A 2D array that we'll be using to simulate the board of the game
 """
 
 class Board:
+    def __init__(self):                              #Default constructor for the Board class, does nothing
+        return 0
+    
     def __init__(self, _array):                      #Accepts a 2D array and initializes itself array = array
         self.board_Array = _array
         self.length = len(_array[0])

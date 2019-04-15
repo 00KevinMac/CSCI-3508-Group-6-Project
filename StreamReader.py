@@ -54,6 +54,10 @@ def stream_read(width, height, EOF_flag):
         board_array = parse['grid']
         board = brd.Board(board_array)
         return board
+    
+    board = brd.Board()
+    EOF_flag = True
+    return board
 
 
     

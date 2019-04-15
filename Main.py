@@ -17,6 +17,7 @@ player_num = int(sys.argv[2])  # this gives the player number
 width = int(sys.argv[4])  # this gives us the width
 height = int(sys.argv[6])  # this gives us the height
 turn_num = 0
+EOF_flag = false
 max_iters = 3
 
 # do we need these? I think Doug said something about using stderr
@@ -29,14 +30,19 @@ while True:
     sys.stderr.write("Recieving board from driver\n")
 
     # read in the json to the board
-    board = rdr.stream_read(width, height)
+    board = rdr.stream_read(width, height, EOF_flag)
 
+    if EOF_flag:
+        sys.stderr.write("Game over. Exiting...\n")
+        return
+    
     # update log
     if board.isEmpty():
-        if player_num != 1:
-            sys.stderr.write("Recieve failed\n")
-        elif player_num == 1 and turn_num == 0:
+        if turn_num == 0:
             sys.stderr.write("Recieve succeeded\n")
+        else:
+            sys.stderr.write("Recieve failed\n")
+            
     else:
         sys.stderr.write("Recieve succeeded\n")        
         

@@ -56,7 +56,7 @@ while True:
         if move >= width:
             sys.stderr.write("Invalid move determined, retrying...\n")
             max_iters -= 1
-        elif board.isFull(move):
+        elif move not in board.get_OkayDokeyColumns():
             sys.stderr.write("Invalid move determined, retrying...\n")
             max_iters -= 1
         else:

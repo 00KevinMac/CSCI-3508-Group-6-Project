@@ -22,12 +22,6 @@ class Board:
     
     def set_Content(self, row, column, value):       #Function that sets the value of an element in the 2D array
         self.board_Array[row][column] = value
-
-    def isFull(self, column):                        #Function that tests if a column in the 2D array is full; value of 0 represents an empty slot, 1 for player 1, 2 for player 2
-        for i in range(self.width):                 #for loop that iterates down the board in a certain column
-            if self.board_Array[column][i] == 0:     #if a value of 0 is read in any element then the board is not full; return false
-                return False
-        return True                                #if no values of 0's are read, then the board is full; return true
     
     def isEmpty(self):                              #Reads all values in board and see's if they are all empty (all 0's)
         for i in range(self.length):                #Increments through each element of each row and tests to see if they are equal to 0

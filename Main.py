@@ -20,7 +20,6 @@ turn_num = 0
 EOF_flag = False
 max_iters = 3
 
-# do we need these? I think Doug said something about using stderr
 sys.stderr.write("Player: " + str(player_num) + '\n')
 sys.stderr.write("Width: " + str(width) + '\n')
 sys.stderr.write("Height: " + str(height) + '\n')
@@ -30,9 +29,10 @@ while True:
     sys.stderr.write("Recieving board from driver\n")
 
     # read in the json to the board
-    board = rdr.stream_read(width, height, EOF_flag)
+    board = rdr.stream_read(width, height, EOF_flag)            # ********Can take out EOF_flag?**********
 
-    if EOF_flag:
+    # board = -1 when the reader detects an end of file and exits out of the while loop
+    if board == -1:
         sys.stderr.write("Game over. Exiting...\n")
         break
     
@@ -84,4 +84,6 @@ while True:
         sys.stderr.write("Send failed\n")
             
 
-
+sys.stderr.close()
+sys.stdout.close()
+sys.stdin.close()

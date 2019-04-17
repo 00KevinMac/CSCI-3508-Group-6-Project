@@ -46,12 +46,9 @@ def stream_read(width, height, EOF_flag):
         parse = json.loads(line)
         board_array = parse['grid']
         board = brd.Board(board_array)
-        return board
+        return board    # returns the board
     
-    board = brd.Board()
+    # board = brd.Board()
     EOF_flag = True
     sys.stderr.write("EOF Recieved.\n")
-    return board
-
-
-    
+    return -1   # returns -1 when there is no more board

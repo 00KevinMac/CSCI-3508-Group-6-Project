@@ -22,3 +22,12 @@ def random_move(board, playerNum):
     # sys.stderr.write("Random move: " + str(column) + '\n')  # displays the random column choice
 
     return column
+
+
+def same_column_move(board, playerNum):
+    moves = []
+    moves = board.get_OkayDokeyColumns()
+
+    column = moves[0]
+
+    return column

@@ -51,7 +51,8 @@ while True:
     bad_move = True  # moved to here, otherwise it never runs the random move function at the bottom
     while bad_move:
         # get random valid move
-        move = plr.random_move(board, player_num)
+        # move = plr.random_move(board, player_num)
+        move = plr.same_column_move(board, player_num)  # this will make the player choose the first available column every time
 
         if move >= width:
             sys.stderr.write("Invalid move determined, retrying...\n")

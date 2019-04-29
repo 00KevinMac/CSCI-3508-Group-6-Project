@@ -32,9 +32,9 @@ while True:
     board = rdr.stream_read(width, height, EOF_flag)            # ********Can take out EOF_flag?**********
 
     # board = -1 when the reader detects an end of file and exits out of the while loop
-    if board == -1:
+    if type(board) == type(-1):
         sys.stderr.write("Game over. Exiting...\n")
-        break
+        breakp
     
     # update log
     if board.isEmpty():

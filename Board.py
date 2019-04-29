@@ -19,6 +19,12 @@ class Board:
         
     def get_Content(self, row, column):              #Function that returns the value of an element in the 2D array
         return self.board_Array[row][column]
+
+    def get_length(self):
+        return self.length
+
+    def get_width(self):
+        return self.width
     
     def set_Content(self, row, column, value):       #Function that sets the value of an element in the 2D array
         self.board_Array[row][column] = value

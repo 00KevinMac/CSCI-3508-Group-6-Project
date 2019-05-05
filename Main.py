@@ -34,7 +34,7 @@ while True:
     # board = -1 when the reader detects an end of file and exits out of the while loop
     if type(board) == type(-1):
         sys.stderr.write("Game over. Exiting...\n")
-        breakp
+        break
     
     # update log
     if board.isEmpty():
@@ -53,9 +53,11 @@ while True:
         # get random valid move
         # move = plr.random_move(board, player_num)
         move = plr.same_column_move(board, player_num)  # this will make the player choose the first available column every time
+        # move = plr.smartMove(board, player_num)  # "smart" player
+        sys.stderr.write("Move tried: " + str(move) + " Type: " + str(type(move)) + "\n")
 
         if move >= width:
-            sys.stderr.write("Invalid move determined, retrying...\n")
+            sys.stderr.write("Invalid move determined (> width), retrying...\n")
             max_iters -= 1
         elif move not in board.get_OkayDokeyColumns():
             sys.stderr.write("Invalid move determined, retrying...\n")
@@ -63,10 +65,12 @@ while True:
         else:
             sys.stderr.write(str(move) + " chosen. This is a valid move.\n")
             bad_move = False
+            max_iters = 3
         if max_iters == 0:
             move = plr.random_move(board, player_num)
-            sys.stderr.write(str(move) + " chosen. This is a valid move.\n")
+            sys.stderr.write(str(move) + " chosen (random). This is a valid move.\n")
             bad_move = False
+            max_iters = 3
 
     sys.stderr.write("Sending move to driver\n")   
     # try to send move 3 times

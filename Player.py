@@ -44,11 +44,18 @@ def smartMove(board, playerNum):
     elif playerNum == 2:
         enemyNum = 1
 
-    for depth in range(1):
+    for depth in range(3):  # will look 3 moves ahead
         for column in range(board.width):
             addWeight(board, column, isPlayer, playerNum, enemyNum)
 
-        selectedMove = selectWeight(board, isPlayer)
+        if depth == 0:
+            selectedMove = selectWeight(board, isPlayer, playerNum, enemyNum)  # return the weight
+        else:
+            selectWeight(board, isPlayer, playerNum, enemyNum)
+
+        print_Board(board)
+
+        # selectedMove = selectWeight(board, isPlayer, playerNum, enemyNum)
         isPlayer = not isPlayer
 
     return selectedMove
@@ -237,12 +244,12 @@ def addWeight(board, column, isPlayer, playerNum, enemyNum):
 
     actualWeight = weight
     weight = 0
-    if board.get_Content(selectedRow, column) != 1 or board.get_Content(selectedRow, column) != 2:
+    if board.get_Content(selectedRow, column) != 1 and board.get_Content(selectedRow, column) != 2:
         board.set_Content(selectedRow, column, actualWeight)
 
 
 # This will add player/enemy choices to the board which will help when determining the weights
-def selectWeight(board, isPlayer):
+def selectWeight(board, isPlayer, playerNum, enemyNum):
     maxWeight = 0
     minWeight = 1000000
     selectedColumn = -1
@@ -262,23 +269,20 @@ def selectWeight(board, isPlayer):
                     selectedRow = row
 
     if isPlayer:
-        board.set_Content(selectedRow, selectedColumn, maxWeight)
+        board.set_Content(selectedRow, selectedColumn, playerNum)
+        # return maxWeight
     else:
-        board.set_Content(selectedRow, selectedColumn, minWeight)
+        board.set_Content(selectedRow, selectedColumn, enemyNum)
+        # return minWeight
 
     return selectedColumn
 
 
-# selects the highest weight for the player
-def selectHighestWeight(board):
-    maxWeight = 0
-    selectedColumn = -1
-
+def print_Board(board):
     for row in range(board.length):
         for column in range(board.width):
-            if int(board.get_Content(row, column)) >= maxWeight:
-                maxWeight = int(board.get_Content(row, column))
-                selectedColumn = column
+            sys.stderr.write(str(board.get_Content(row, column)) + "\t")
 
-    return int(selectedColumn)
+        sys.stderr.write("\n")
+    sys.stderr.write("\n")
 

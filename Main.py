@@ -52,8 +52,8 @@ while True:
     while bad_move:
         # get random valid move
         # move = plr.random_move(board, player_num)
-        move = plr.same_column_move(board, player_num)  # this will make the player choose the first available column every time
-        # move = plr.smartMove(board, player_num)  # "smart" player
+        # move = plr.same_column_move(board, player_num)  # this will make the player choose the first available column every time
+        move = plr.smartMove(board, player_num)  # "smart" player
         sys.stderr.write("Move tried: " + str(move) + " Type: " + str(type(move)) + "\n")
 
         if move >= width:

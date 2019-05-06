@@ -39,7 +39,7 @@ class Board:
     def get_OkayDokeyColumns(self):                  #Function that returns a list of values that show which columns are not full
         okayDokeyList = []                           #Creates a list/array
         for i in range(self.width):                  #for loop that uses the isFull function to test all columns of the board
-            if self.board_Array[i][0] == 0 or self.board_Array[i][0] > 3:
+            if self.board_Array[i][0] == 0 or int(self.board_Array[i][0]) > 3:
                 okayDokeyList.append(i)
                                                      #if the column is not full then append the column number to the list
                                                      #appends the number of column that is not full onto the list

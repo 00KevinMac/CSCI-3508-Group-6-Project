@@ -55,20 +55,6 @@ def smartMove(board, playerNum):
     # return int(selectHighestWeight(board))
 
 
-# makes all our locations on the board cells to 'X', all enemy locations to 'Y'
-def setupValidMoves(board, playerNum):
-    tempBoard = board
-
-    for row in range(tempBoard.length):
-        for column in range(tempBoard.width):
-            if tempBoard.get_Content(row, column) == playerNum:  # set our positions to X
-                tempBoard.set_Content(row, column, 'X')
-            elif tempBoard.get_Content(row, column) != playerNum and tempBoard.get_Content(row, column) == 1 or tempBoard.get_Content(row, column) == 2:  # enemy to Y
-                tempBoard.set_Content(row, column, 'Y')
-
-    return tempBoard
-
-
 # checks the valid moves and returns the best score of the moves
 def addWeight(board, column, isPlayer, playerNum, enemyNum):
     weight = 0
